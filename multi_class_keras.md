@@ -1,6 +1,5 @@
 # Classificação multiclass com Keras
-A Parada Antecipada é uma maneira muito diferente de regularizar o modelo de aprendizado de máquina.  A forma como isso acontece é interromper o treinamento assim que o erro de validação atingir o mínimo.  A figura abaixo mostra um modelo sendo treinado.
-O EarlyStoping monitora o desempenho do modelo para cada época em um conjunto de validação retido durante o treinamento e encerra o treinamento condicional ao desempenho da validação [2].
+Não inicado ainda
 
 <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*iAK5uMoOlX1gZu-cSh1nZw.png"  width="400">
 
