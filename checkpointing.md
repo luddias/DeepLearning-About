@@ -15,7 +15,8 @@ model.fit(X, Y, validation_split=0.33, epochs=150, batch_size=10, callbacks=call
 ```
 ## Referências
 
-How to use the ModelCheckpoint callback with Keras and TensorFlow.
+[1] How to use the ModelCheckpoint callback with Keras and TensorFlow.
 <br>Disponível em: <https://pyimagesearch.com/2021/06/30/how-to-use-the-modelcheckpoint-callback-with-keras-and-tensorflow/>.
 
-‌
+‌‌[2] BROWNLEE, J. How to Check-Point Deep Learning Models in Keras.
+Disponível em: https://machinelearningmastery.com/check-point-deep-learning-models-keras/.
