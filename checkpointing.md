@@ -13,3 +13,9 @@ callbacks_list = [checkpoint]
 # Fit the model
 model.fit(X, Y, validation_split=0.33, epochs=150, batch_size=10, callbacks=callbacks_list, verbose=0)
 ```
+## Referências
+
+How to use the ModelCheckpoint callback with Keras and TensorFlow.
+<br>Disponível em: <https://pyimagesearch.com/2021/06/30/how-to-use-the-modelcheckpoint-callback-with-keras-and-tensorflow/>.
+
+‌
