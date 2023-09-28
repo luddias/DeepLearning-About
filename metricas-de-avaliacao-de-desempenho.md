@@ -23,8 +23,11 @@
 
 ## Referências
 RODRIGUES, V. Métricas de Avaliação: acurácia, precisão, recall… quais as diferenças? Disponível em: <https://vitorborbarodrigues.medium.com/m%C3%A9tricas-de-avalia%C3%A7%C3%A3o-acur%C3%A1cia-precis%C3%A3o-recall-quais-as-diferen%C3%A7as-c8f05e0a513c>.
-
+<p>
 Evaluating segmentation metrics — skimage 0.22.0rc0.dev0 documentation. Disponível em: <https://scikit-image.org/docs/dev/auto_examples/segmentation/plot_metrics.html>. Acesso em: 28 set. 2023.
+<p>
+JORDAN, J. Evaluating image segmentation models. Disponível em: <https://www.jeremyjordan.me/evaluating-image-segmentation-models/>.
 
+‌
 ‌
 ‌
