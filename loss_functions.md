@@ -23,3 +23,8 @@ A perda focal visa melhorar o desempenho do modelo em exemplos difíceis, concen
 ## α-Balanced Focal Loss
 
 Esta variante combina as características do fator de pesagem α (das ideias de perda de entropia cruzada balanceada) e do parâmetro de focagem γ , o que resulta ainda em maior precisão em relação à forma não balanceada. A perda focal balanceada α lida com o desequilíbrio de classe introduzindo dois componentes de perda focal e o fator de ponderação α . A perda focal reduz a contribuição de perda de exemplos bem classificados, o que permite que o modelo se concentre em exemplos difíceis de classificar. O parâmetro de foco γ ajusta suavemente a taxa na qual exemplos fáceis são reduzidos. α é usado para ajustar os pesos atribuídos às diferentes classes. Na prática, α pode ser definido pela frequência de classe inversa ou tratado como um hiperparâmetro a ser definido por validação cruzada. O valor α dimensiona e equilibra a função de perda e produz uma precisão ligeiramente melhorada em relação à forma não balanceada α.
+
+## Referência Bibliográfica
+[1] NIYAZ, U. Focal loss for handling the issue of class imbalance. Disponível em: <https://medium.com/data-science-ecom-express/focal-loss-for-handling-the-issue-of-class-imbalance-be7addebd856>.
+
+‌
