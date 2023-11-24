@@ -36,10 +36,21 @@ A perda de Tversky pode ser usada para treinar modelos de aprendizado de máquin
 
 A perda de Tversky é uma função de perda flexível que permite ajustar a compensação entre precisão e recall em seu modelo de segmentação. É especialmente útil nos casos em que o custo de falsos positivos e falsos negativos difere significativamente e você deseja ajustar o comportamento do modelo de acordo.
 
+## IoU Loss Function [3]
+Essas função é baseada no coeficiênte IoU que é calculado na seguinte forma:
+
+$$IOU = \frac{Área\ da\ Interseção}{Área\ da\ União}$$ 
+
+
+- A "Área da Interseção" é a área comum entre a caixa delimitadora prevista pelo modelo e a caixa delimitadora verdadeira.
+- A "Área da União" é a área total coberta pelas duas caixas delimitadoras.
+
 
 ## Referências Bibliográficas
 [1] tf.keras.losses.CategoricalFocalCrossentropy | TensorFlow v2.14.0. Disponível em: <https://www.tensorflow.org/api_docs/python/tf/keras/losses/CategoricalFocalCrossentropy>. Acesso em: 23 nov. 2023.
 
 [2] HESARAKI, S. Tversky loss. Disponível em: <https://medium.com/@saba99/tversky-loss-902f5f8cc35f>. Acesso em: 23 nov. 2023.
+
+‌[3] 207 - Using IoU (Jaccard) as loss function to train U-Net for semantic segmentation. Disponível em: <https://www.youtube.com/watch?v=BNPW1mYbgS4>.
 
 ‌
