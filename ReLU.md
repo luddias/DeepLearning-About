@@ -1,73 +1,55 @@
-# Rectified Linear Unit - ReLU
-The Rectified Linear Unit is the most commonly used activation function in deep learning models. The function returns 0 if it receives any negative input, but for any positive value  x
-  it returns that value back. So it can be written as  f(x)=max(0,x)
- .
+# Unidade Linear Retificada - ReLU
+A Unidade Linear Retificada é a função de ativação mais comumente utilizada em modelos de aprendizado profundo. A função retorna 0 se receber qualquer entrada negativa, mas para qualquer valor positivo  x , ela retorna esse valor de volta. Portanto, pode ser escrita como  f(x) = max(0, x) .
 
-Graphically it looks like this
+Graficamente, ela se parece com isto:
 
-![Relu Graph](https://i.imgur.com/gKA4kA9.jpg)
+![Gráfico ReLU](https://i.imgur.com/gKA4kA9.jpg)
 
-It's surprising that such a simple function (and one composed of two linear pieces) can allow your model to account for non-linearities and interactions so well. But the ReLU function works great in most applications, and it is very widely used as a result.
+É surpreendente que uma função tão simples (e composta por duas partes lineares) possa permitir que seu modelo leve em consideração não linearidades e interações tão bem. Mas a função ReLU funciona muito bem na maioria das aplicações e é muito amplamente utilizada como resultado.
 
-## Why It Works
+## Por que Funciona
 
-Introducing Interactions and Non-linearities
-Activation functions serve two primary purposes:
+Introduzindo Interações e Não-Linearidades
+As funções de ativação servem a dois propósitos principais:
 
-1) Help a model account for interaction effects.
-What is an interactive effect? It is when one variable A affects a prediction differently depending on the value of B. For example, if my model wanted to know whether a certain body weight indicated an increased risk of diabetes, it would have to know an individual's height. Some bodyweights indicate elevated risks for short people, while indicating good health for tall people. So, the effect of body weight on diabetes risk depends on height, and we would say that weight and height have an interaction effect.
+1) Ajudar um modelo a levar em consideração efeitos de interação.
+O que é um efeito de interação? É quando uma variável A afeta uma previsão de forma diferente dependendo do valor de B. Por exemplo, se meu modelo quiser saber se um certo peso corporal indica um risco aumentado de diabetes, ele teria que saber a altura de um indivíduo. Alguns pesos indicam riscos elevados para pessoas baixas, enquanto indicam boa saúde para pessoas altas. Portanto, o efeito do peso corporal no risco de diabetes depende da altura, e diríamos que peso e altura têm um efeito de interação.
 
-2) Help a model account for non-linear effects. This just means that if I graph a variable on the horizontal axis, and my predictions on the vertical axis, it isn't a straight line. Or said another way, the effect of increasing the predictor by one is different at different values of that predictor.
+2) Ajudar um modelo a levar em consideração efeitos não-lineares. Isso apenas significa que se eu traçar uma variável no eixo horizontal e minhas previsões no eixo vertical, não será uma linha reta. Ou dito de outra forma, o efeito de aumentar o preditor em um é diferente em diferentes valores desse preditor.
 
-How ReLU captures Interactions and Non-Linearities
-Interactions: Imagine a single node in a neural network model. For simplicity, assume it has two inputs, called A and B. The weights from A and B into our node are 2 and 3 respectively. So the node output is  f(2A+3B)
- . We'll use the ReLU function for our f. So, if  2A+3B
-  is positive, the output value of our node is also  2A+3B
- . If  2A+3B
-  is negative, the output value of our node is 0.
+Como ReLU Captura Interações e Não-Linearidades
+Interações: Imagine um único nó em um modelo de rede neural. Para simplicidade, assuma que ele tem duas entradas, chamadas A e B. Os pesos de A e B para o nosso nó são 2 e 3, respectivamente. Portanto, a saída do nó é  f(2A+3B) . Usaremos a função ReLU para nosso f. Portanto, se  2A+3B  for positivo, o valor de saída do nosso nó também será  2A+3B . Se  2A+3B  for negativo, o valor de saída do nosso nó será 0.
 
-For concreteness, consider a case where A=1 and B=1. The output is  2A+3B
- , and if A increases, then the output increases too. On the other hand, if B=-100 then the output is 0, and if A increases moderately, the output remains 0. So A might increase our output, or it might not. It just depends what the value of B is.
+Para concretizar, considere um caso em que A=1 e B=1. A saída é  2A+3B , e se A aumenta, então a saída aumenta também. Por outro lado, se B=-100 então a saída é 0, e se A aumenta moderadamente, a saída permanece 0. Então A pode aumentar nossa saída, ou não. Isso depende apenas do valor de B.
 
-This is a simple case where the node captured an interaction. As you add more nodes and more layers, the potential complexity of interactions only increases. But you should now see how the activation function helped capture an interaction.
+Este é um caso simples onde o nó capturou uma interação. À medida que você adiciona mais nós e mais camadas, a complexidade potencial das interações apenas aumenta. Mas agora você deve ver como a função de ativação ajudou a capturar uma interação.
 
-- Non-linearities: A function is non-linear if the slope isn't constant. So, the ReLU function is non-linear around 0, but the slope is always either 0 (for negative values) or 1 (for positive values). That's a very limited type of non-linearity.
+- Não-Linearidades: Uma função é não-linear se a inclinação não for constante. Portanto, a função ReLU é não-linear em torno de 0, mas a inclinação é sempre ou 0 (para valores negativos) ou 1 (para valores positivos). Isso é um tipo muito limitado de não-linearidade.
 
-But two facts about deep learning models allow us to create many different types of non-linearities from how we combine ReLU nodes.
+Mas dois fatos sobre modelos de aprendizado profundo nos permitem criar muitos tipos diferentes de não-linearidades a partir de como combinamos os nós ReLU.
 
-First, most models include a bias term for each node. The bias term is just a constant number that is determined during model training. For simplicity, consider a node with a single input called A, and a bias. If the bias term takes a value of 7, then the node output is f(7+A). In this case, if A is less than -7, the output is 0 and the slope is 0. If A is greater than -7, then the node's output is 7+A, and the slope is 1.
+Primeiro, a maioria dos modelos inclui um termo de viés para cada nó. O termo de viés é apenas um número constante que é determinado durante o treinamento do modelo. Para simplicidade, considere um nó com uma única entrada chamada A e um viés. Se o termo de viés assumir um valor de 7, então a saída do nó é f(7+A). Neste caso, se A for menor que -7, a saída será 0 e a inclinação será 0. Se A for maior que -7, então a saída do nó será 7+A, e a inclinação será 1.
 
-So the bias term allows us to move where the slope changes. So far, it still appears we can have only two different slopes.
+Portanto, o termo de viés nos permite mover onde a inclinação muda. Até agora, ainda parece que só podemos ter duas inclinações diferentes.
 
-However, real models have many nodes. Each node (even within a single layer) can have a different value for it's bias, so each node can change slope at different values for our input.
+No entanto, os modelos reais têm muitos nós. Cada nó (mesmo dentro de uma única camada) pode ter um valor diferente para seu viés, então cada nó pode mudar de inclinação em diferentes valores para nossa entrada.
 
-When we add the resulting functions back up, we get a combined function that changes slopes in many places.
+Quando somamos as funções resultantes, obtemos uma função combinada que muda de inclinação em muitos lugares.
 
-These models have the flexibility to produce non-linear functions and account for interactions well (if that will giv better predictions). As we add more nodes in each layer (or more convolutions if we are using a convolutional model) the model gets even greater ability to represent these interactions and non-linearities.
+Esses modelos têm a flexibilidade de produzir funções não lineares e levar em consideração interações de forma eficaz (se isso proporcionar previsões melhores). À medida que adicionamos mais nós em cada camada (ou mais convoluções se estivermos usando um modelo convolucional), o modelo obtém uma capacidade ainda maior de representar essas interações e não linearidades.
 
-## Facilitating Gradient Descent
-This section is more technical than those above it. If you find it difficult, remember that you can have a lot of success using deep learning even without this technical background.
+## Facilitando o Gradiente Descendente
+Esta seção é mais técnica do que as anteriores. Se você achar difícil, lembre-se de que você pode ter muito sucesso usando aprendizado profundo mesmo sem esse conhecimento técnico.
 
-Historically, deep learning models started off with s-shaped curves (like the tanh function below)Imgur
+Historicamente, os modelos de aprendizado profundo começaram com curvas em forma de S (como a função tangente hiperbólica abaixo):
 
-The tanh would seem to have a couple advantages. Even though it gets close to flat, it isn't completely flat anywhere. So it's output always reflects changes in it's input, which we might expect to be a good thing. Secondly, it is non-linear (or curved everywhere). Accounting for non-linearities is one of the activation function's main purposes. So, we expect a non-linear function to work well.
+[Imagem do Gráfico Tanh](Imagem do Gráfico Tanh)
 
-However researchers had great difficulty building models with many layers when using the tanh function. It is relatively flat except for a very narrow range (that range being about -2 to 2). The derivative of the function is very small unless the input is in this narrow range, and this flat derivative makes it difficult to improve the weights through gradient descent. This problem gets worse as the model has more layers. This was called the vanishing gradient problem.
+O tangente hiperbólica pareceria ter algumas vantagens. Mesmo que se aproxime de uma superfície plana, nunca é completamente plano em nenhum lugar. Portanto, sua saída sempre reflete mudanças em sua entrada, o que poderíamos esperar que fosse uma coisa boa. Em segundo lugar, é não-linear (ou curvada em todos os lugares). Levar em consideração não-linearidades é um dos principais propósitos da função de ativação. Portanto, esperamos que uma função não linear funcione bem.
 
-The ReLU function has a derivative of 0 over half it's range (the negative numbers). For positive inputs, the derivative is 1.
+No entanto, os pesquisadores tiveram grande dificuldade em construir modelos com muitas camadas ao usar a função tangente hiperbólica. Ela é relativamente plana, exceto por uma faixa muito estreita (essa faixa sendo cerca de
 
-When training on a reasonable sized batch, there will usually be some data points giving positive values to any given node. So the average derivative is rarely close to 0, which allows gradient descent to keep progressing.
-
-## Alternatives
-There are many similar alternatives which also work well. The Leaky ReLU is one of the most well known. It is the same as ReLU for positive numbers. But instead of being 0 for all negative values, it has a constant slope (less than 1.).
-
-That slope is a parameter the user sets when building the model, and it is frequently called  α
- . For example, if the user sets  α=0.3
- , the activation function is f(x) = max(0.3*x, x). This has the theoretical advantage that, by being influenced by x at all values, it may be make more complete use of the information contained in x.
-
-Their are other alternatives, but both practitioners and researchers have generally found insufficient benefit to justify using anything other than ReLU.
-
-## Bibliography References
+## Referências Bibliográficas
 
 [1] Rectified Linear Units (ReLU) in Deep Learning. Disponível em: <https://www.kaggle.com/code/dansbecker/rectified-linear-units-relu-in-deep-learning>.
 
